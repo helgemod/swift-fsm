@@ -10,7 +10,7 @@ test:
 
 # Build and run the speaker example
 example: build
-	swift run --package-path . --target SpeakerExample
+	swift run SpeakerExample
 
 # Clean build artifacts
 clean:
@@ -19,8 +19,8 @@ clean:
 
 # Run speaker example 1
 example1: build
-	swift run --package-path . --target SpeakerExample 1
+	swift run SpeakerExample 1
 
 # Run speaker example 2
 example2: build
-	swift run --package-path . --target SpeakerExample 2 
+	swift run SpeakerExample 2 
