@@ -1,0 +1,8 @@
+# Python reference folder
+python_reference/
+
+# macOS system files
+.DS_Store
+
+# Swift build artifacts
+.build/ 
