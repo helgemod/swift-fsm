@@ -18,9 +18,9 @@ enum SpeakerEvents: String, CaseIterable, Hashable {
 // Speaker class that uses FSM
 class Speaker {
     private var volume: Int = 0
-    private let fsm: FSM<SpeakerStates, SpeakerEvents>
     
-    init() {
+    // Lazy initialization of FSM
+    private lazy var fsm: FSM<SpeakerStates, SpeakerEvents> = {
         // Create states
         let offState = State<SpeakerStates, SpeakerEvents>(verbose: true)
         offState.addHandler(eventType: .powerOn) { _ in
@@ -34,19 +34,6 @@ class Speaker {
         onState.addHandler(eventType: .powerOff) { _ in
             Transition(toState: .off)
         }
-        
-        // Create FSM first
-        self.fsm = FSM(
-            initialState: .off,
-            stateObjects: [
-                .off: offState,
-                .on: onState
-            ],
-            timeoutEvent: .timeout,
-            verbose: true
-        )
-        
-        // Now add the handler that uses self
         onState.addHandler(eventType: .setVolume) { [weak self] event in
             if let volume = event.args.first as? Int {
                 self?.setVolumeInternal(volume)
@@ -63,6 +50,20 @@ class Speaker {
         onState.addExitHook { _ in
             print("on_state exit hook: Powering down...")
         }
+        
+        return FSM(
+            initialState: .off,
+            stateObjects: [
+                .off: offState,
+                .on: onState
+            ],
+            timeoutEvent: .timeout,
+            verbose: true
+        )
+    }()
+    
+    init() {
+        // FSM will be initialized lazily when first accessed
     }
     
     func powerOn() {

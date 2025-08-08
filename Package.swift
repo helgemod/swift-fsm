@@ -29,6 +29,12 @@ let package = Package(
         .executableTarget(
             name: "SpeakerExample",
             dependencies: ["SwiftFSM"],
-            path: "Examples"),
+            path: "Examples",
+            sources: ["SpeakerExample.swift"]),
+        .executableTarget(
+            name: "SmartHomeExample",
+            dependencies: ["SwiftFSM"],
+            path: "Examples",
+            sources: ["SmartHomeExample.swift"]),
     ]
 ) 

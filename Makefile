@@ -23,4 +23,8 @@ example1: build
 
 # Run speaker example 2
 example2: build
-	swift run SpeakerExample 2 
+	swift run SpeakerExample 2
+
+# Run smart home example
+smarthome: build
+	swift run SmartHomeExample 1 
