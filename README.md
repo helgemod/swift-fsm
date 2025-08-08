@@ -20,13 +20,13 @@ Add this package to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/helgemod/swift-fsm.git", from: "1.0.0")
+    .package(url: "https://github.com/your-org/swift-fsm.git", from: "1.0.0")
 ]
 ```
 
 Or add it directly in Xcode:
 1. File → Add Package Dependencies
-2. Enter the repository URL: `https://github.com/helgemod/swift-fsm.git`
+2. Enter the repository URL: `https://github.com/your-org/swift-fsm.git`
 3. Select the version you want to use
 
 ## Quick Start
